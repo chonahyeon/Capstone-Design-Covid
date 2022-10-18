@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+	<title>
+		코로나 예측 진단서비스
+	</title>
+
+	<style type="text/css">
+
+		/* Styling the Body element i.e. Color,
+		Font, Alignment */
+		body {
+			background-color: #AAC4FF;
+			font-family: Verdana;
+			text-align: center;
+		}
+
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+			background-color: #EEF1FF;
+			max-width: 500px;
+			margin: 50px auto;
+			padding: 30px 20px;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Styling form-control Class */
+		.form-control {
+			text-align: left;
+			margin-bottom: 25px;
+		}
+
+		/* Styling form-control Label */
+		.form-control label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		/* Styling form-control input,
+		select, textarea */
+		.form-control input,
+		.form-control select,
+		.form-control textarea {
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 10px;
+			display: block;
+			width: 85%;
+		}
+
+		/* Styling form-control Radio
+		button and Checkbox */
+		.form-control input[type="radio"],
+		.form-control input[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+		}
+
+		/* Styling Button */
+		button {
+			background-color: skyblue;
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			font-size: 21px;
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+
+        h4{
+            margin: 0px;
+            margin-bottom:0.5em;
+        }
+        #label-name{
+            margin-top:0.5em;
+        }
+        .alert{
+            color:red;
+            font-size: 0.8em;
+            font-style: italic;
+            margin-bottom: 0px;
+        }
+
+        .Radiolist h4{
+            margin-bottom:0.3em;
+        }
+
+	</style>
+</head>
+
+<body>
+	<h1>코로나 예측 진단 서비스</h1>
+
+	<!-- Create Form -->
+	<form id="form" class="form-control Predict" action="result/" method="post">
+        {% csrf_token %}
+        <h4>안녕하세요😀 코로나 예측 진단 서비스입니다.</h4>
+        <h4>총 20문항이며, 소요시간은 약 2분 정도입니다.</h4>
+        <h4>해당되는 증상을 체크해주세요!</h4>
+
+		<!-- Details -->
+		<div class="sub-title">
+            <p class="alert"> 1~3문항은 역학조사를 위해서만 사용됩니다.</p>
+			<label for="name" id="label-name">
+				1.이름을 입력해주세요
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text"
+				name="이름"
+				placeholder="Enter your name" />
+		</div>
+
+		<div class="form-control">
+			<label for="email" id="label-email">
+				2.이메일을 입력해주세요
+			</label>
+
+			<!-- Input Type Email-->
+			<input type="email"
+				name="이메일"
+				placeholder="Enter your email" />
+		</div>
+
+		<div class="form-control">
+			<label for="age" id="label-age">
+				3.나이를 입력해주세요
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text"
+				name="나이"
+				placeholder="Enter your age" />
+		</div>
+
+		<div class="form-control">
+			<label>
+				4.해당되는 증상에 체크해주세요
+			</label>
+
+			<div class="Radiolist">
+                <h4>👉 기침</h4>
+                <label><input type="radio" name="기침" value=1> 있음</label>
+                <label><input type="radio" name="기침" value=0> 없음</label>
+                <h4>👉 근육통</h4>
+                <label><input type="radio" name="근육통" value=1> 있음</label>
+                <label><input type="radio" name="근육통" value=0> 없음</label>
+                <h4>👉 피곤함</h4>
+                <label><input type="radio" name="피곤함" value=1> 있음</label>
+                <label><input type="radio" name="피곤함" value=0> 없음</label>
+                <h4>👉 목아픔</h4>
+                <label><input type="radio" name="목아픔" value=1> 있음</label>
+                <label><input type="radio" name="목아픔" value=0> 없음</label>
+                <h4>👉 콧물</h4>
+                <label><input type="radio" name="콧물" value=1> 있음</label>
+                <label><input type="radio" name="콧물" value=0> 없음</label>
+                <h4>👉 코막힘</h4>
+                <label><input type="radio" name="코막힘" value=1> 있음</label>
+                <label><input type="radio" name="코막힘" value=0> 없음</label>
+                <h4>👉 열</h4>
+                <label><input type="radio" name="열" value=1> 있음</label>
+                <label><input type="radio" name="열" value=0> 없음</label>
+                <h4>👉 매스꺼움</h4>
+                <label><input type="radio" name="매스꺼움" value=1> 있음</label>
+                <label><input type="radio" name="매스꺼움" value=0> 없음</label>
+                <h4>👉 구토</h4>
+                <label><input type="radio" name="구토" value=1> 있음</label>
+                <label><input type="radio" name="구토" value=0> 없음</label> 
+                <h4>👉 설사</h4>
+                <label><input type="radio" name="설사" value=1> 있음</label>
+                <label><input type="radio" name="설사" value=0> 없음</label> 
+                <h4>👉 호흡곤란</h4>
+                <label><input type="radio" name="호흡곤란" value=1> 있음</label>
+                <label><input type="radio" name="호흡곤란" value=0> 없음</label> 
+                <h4>👉 숨막힘</h4>
+                <label><input type="radio" name="숨막힘" value=1> 있음</label>
+                <label><input type="radio" name="숨막힘" value=0> 없음</label> 
+                <h4>👉 미각손실</h4>
+                <label><input type="radio" name="미각손실" value=1> 있음</label>
+                <label><input type="radio" name="미각손실" value=0> 없음</label> 
+                <h4>👉 후각손실</h4>
+                <label><input type="radio" name="후각손실" value=1> 있음</label>
+                <label><input type="radio" name="후각손실" value=0> 없음</label>
+                <h4>👉 코가려움</h4>
+                <label><input type="radio" name="코가려움" value=1> 있음</label>
+                <label><input type="radio" name="코가려움" value=0> 없음</label>
+                <h4>👉 눈가려움</h4>
+                <label><input type="radio" name="눈가려움" value=1> 있음</label>
+                <label><input type="radio" name="눈가려움" value=0> 없음</label>
+                <h4>👉 목가려움</h4>
+                <label><input type="radio" name="목가려움" value=1> 있음</label>
+                <label><input type="radio" name="목가려움" value=0> 없음</label>
+                <h4>👉 귀아픔</h4>
+                <label><input type="radio" name="귀아픔" value=1> 있음</label>
+                <label><input type="radio" name="귀아픔" value=0> 없음</label>
+                <h4>👉 오한</h4>
+                <label><input type="radio" name="오한" value=1> 있음</label>
+                <label><input type="radio" name="오한" value=0> 없음</label>
+                <h4>👉 충혈</h4>
+                <label><input type="radio" name="충혈" value=1> 있음</label>
+                <label><input type="radio" name="충혈" value=0> 없음</label>
+            </div>
+		</div>
+
+		<div class="form-control">
+			<label>
+				5. 기타 증상이 있다면 입력해주세요
+			</label>
+
+			<!-- Input Type Text -->
+			<input type="text" 
+				name="기타증상"
+				placeholder="Enter your comment" />
+		</div>
+
+		<!-- Multi-line Text Input Control -->
+		<input type="submit" value="Submit"> <input type="reset" value="Reset">
+	</form>
+</body>
+
+</html>

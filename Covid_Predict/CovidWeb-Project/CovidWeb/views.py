@@ -1,6 +1,9 @@
+from multiprocessing import context
 import joblib
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+
+from etc_symptom.models import Etc_Symptom
 
 
 def home(request):
@@ -10,7 +13,7 @@ def Survey_home(request):
     return render(request,'Survey_home.html')
 
 def result(request):
-    tree = joblib.load('CovidWeb-Project\covid_model.sav')
+    tree = joblib.load('covid_model.sav')
     lis_typing=[]
     lis = []
     lis_typing.append(request.POST['이름'])
@@ -44,4 +47,15 @@ def result(request):
     print('기타값',lis_typing)
 
     pred = tree.predict([lis])
+    upload_sym(request)
     return render(request,'result.html',{'pred':pred,'lis':lis})
+
+def upload_sym(request):
+        if request.method == 'POST':
+            sym=Etc_Symptom()
+            sym.name=request.POST['이름']
+            sym.email=request.POST['이메일']
+            sym.age=request.POST['나이']
+            sym.etc_symptom=request.POST['기타증상']
+            sym.save()
+            #return redirect('sym') 

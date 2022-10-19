@@ -3,7 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>코로나 예측 진단서비스</title>
+        {% load static %}
         <style>
+
+            body{
+                background-color: #AAC4FF;
+            }
+
             .map_wrap, .map_wrap * {font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
             /*.map_wrap {position:relative;width:100%;height:350px;}*/
             
@@ -13,10 +19,10 @@
             #category li:last-child{margin-right:0;border-right:0;}
             #category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
            
-            #category li .mart {background:url(https://lh3.googleusercontent.com/fife/AAbDypCeIc8f1OJBleJ54hOJndrPem2W6dk-fybfxMnNNmMAAbCQbZT0c5D7uiGZ_T_kNkZXTRF7P_wIUkEjiVfMHX6usdVBcp400hdAeads2_HwZZTZHrvkCFgEvFoupht5tNd02TglkuSpO0SmoPfKrC4-AW3qkX9mP02IQtKLxmNtji1vwpB3KVqfbin8XHt-V7X8idKzm-vVakolMuK244V98DQw-LLmrdAImkwoUuRE6jFNRzRPwhJ3uW-LiiObNxHQF3PUjxtwXCGZ7GAlYtASDb8aYi4aP9XzxrXj8XIoI_wzm6XN9ojMNQ1wvMGqEMGZZ2vsnNl_SVmrcpxF9vsPmlj7ZEJljaKeiqw23qflqAhh5RSRv5VflT4qWBA-aJ7PzWRn1nFSPXDMYy5EoFaUCrXkRfkl3H1gguLpOBVIHnuKQxDUshjCopbtvVh2RY3-sssmvqSItIEc_rmgCUz17cxt0rD_UTJOiEz400_L8ggN57EdKDWv8BOuuifIvdeNlfVN3qY3XM_dTy6pr1sCjYs6br_wVwD6PvXNrhzY-5toQO6ScACzqe_HaqK8II0UAMhUEGuZXNJerOo0P26wE3dDpH93sUX6gVFvvwzfTpyWrx6banuHOFz0DHqWwiqCyJadkyRCuh7QVeJvQiyCR8--dpHsg0rgvUrCCB1lzHHMs6ttPoYd56kWWKo-uDYSiLue5B6vUJpyFgEU5yGFl2YLtJt2U87m48SN6fnK_nSz68AOFRP71t0-IojujrCoV1GxHaKaw0JZY54BgtbpdcM3rqyBTzdu9XpHs-AmC-JhsT3XwJ-8KuuQPT6XaQp-4olcmI8D5oEjq4n3TnQ93iGlhl_oxme9jEGNGe5AvJ_XMaTCYCPeRatEfpeexl-fdzVcd6fGZkoVIjZUXAZ_knt887Y1Jr150l_w9ZHk1YcNfpRB1r2PF9hG6ljSyNm6xg_ig9i6k76gkYXho8vdQCo7uAiP0i9--kAAvYL6wlTrCiioRU5SgO3t_I6Y4eIIN0_ZYdnVPh-7T4wMY5qwIhciNzDQQ26OB01sU4bF0TKVgrYGkcTPP3xZfoerXdkOTYvqF7bWk6wy6YnyO_0eYmBxh0oQKe71IWvLMZe8VF9DhmEFzUqhLhF_aeV9AblCaKcLn43dIQxX6hFdx4nRlSXINOm_DLWVEhgC6wvRx9s5OWbXmPcM9VbXZ_fQNjxxuv6Hcf8VRn11oIyF74MiSi0Dsm46Gwwphn1R6Wo4ZzQCvPWME5Sar7x1Ep_kf8op1eaRRz5QYuTakWRAF61_VoQlsgC6RGCCMm-J6aVRMQpXx6Wya_wqgiCOq9D1ojuCn2GMTzH95DeX2wUrjPnuBpHKW8aqjWKz0xCBn7omuWgjkslrrXFuU60SqZU2Y9lPAAsoSfsE0ty4vJu6UwZtRLnLBgPLUXgDwVnBzFyhXdc_a_8m5PNPsSNVYKEWAun6Jy-n3oBW6G0=w1618-h912);}
-            #category li .pharmacy {background:url(https://lh3.googleusercontent.com/fife/AAbDypDxvZSFBVVeqIMt7QSqYqJkI5Sq_wZN8XxhLk6ob3wluDAOeH-iE6iYuBdLbeLbpvkpCFgIpl5nNK5EDM_hT9dj6pFY-Jl3a5Q-btPKBcm_1z21a5HXXDiv_sYPbR7YAeohqcDCo-W1A4EJExQaVJPK8PwuadqrOM6gs5bGz7QFV06jQAx5dSr4Qjt_4VHfJXsf859cLXf4jkg6mhfsUljZ3n0IDvd1fOny0FeZ_gjuG4erk5hFEbDBrRDv-xWKWpjlHRq-5ejTPJxSY7JYtoync0VqJp-3VXLWES3xoDdziuA1oqURs-j1Et0QFF25EzKQw92uLcc4gMrpdSqaRwzYT6KtS5HLjvrpZMd2p_ugZz3yB8YsUMpDgijs1jR_gP25oqrFcCvDMu5c5hHO9E_BjDhTFyNR3zPHTa6909-875J_CFGJelJ6T_BIbCu6CFQd_2uJTyrbPhiDC1TP63viytATzhvvUP7lzZ1gx1dm1zG8uE-1ziZnYW8HXVxDAzlJwhaFpV68lS_jrXnSuRZNUJs-jXUGr15TgpjchheVu_bSWoz1jvjJeCX-hmP0l9vbzBM7s1AGK0oxX9aYid17owA1qKn09Ix1bTaVeIa0DbQOCN6V8baj0HxdJrdsUS-nmQEpnyKE2v18BmTAD1dYFsIzKLzYGhCKNy3GZnQWhjfUV5rtCvq4thPOvr0-6UW_WbQXLpRWbUd75VZmAr9qRK8IBaUlLlRyPL4rMVGcYZqnnXhzQtqKnibqUB6IaSNHJt7MfiXt0mHO2w3x_UXvBPGLbEtrAmIyeT4QDuj45Mu4M9yS83RXJrPzTW5bR5rIhxavFElqIJ2FO_7SCI5EzmZ7C_SSLwTnFS8cUO0f-K4kpohQe1KA7wvKr5oI99bSDqF7FNhlr6McrNBIFNdQGIiLusjVjAdqu_DHSorYyB45-Fz4ubFFXoouoX6erb25ZmnyFb_j9nskhuL23JnyihK4MzVx1DoaOimAwzXsl-gPUEXipjV_N_IPGNf2GbfubBRALJ63NUL66PMzIWpfgGDxuO2wrHzj1va8KGrdOGqmKPwNeOeRNh3FJjJzYuM5Bmnaqaiza2wtt5y3C6HLmKGNman4heK7MgP5M5puF75JzrXsJbu2cGh_0zv-L7lJtDPj4fzV1F-gHDPyjQJiUKresefL4Ni3qBFJM8pE8g1qrtfAuQzvqGsMjP64X8fJ9bKumSMXZrYdrmLiALNOOuEbeDOrrIOCCnAKO9lbLP4LXlQvofmDiMZN9MhlHp3yR6huXRrWSm2oP0DzZ2cUQeMe0gvxxppMHv2cPbol5J2WnyWc94rvzdoN3BkvUXAacXgaSF0itsvhNrnCaTHhhn96KbQZfydoB-gsCzMRYc7Fi_HDzTvcG_ZxmiDUj_Kdjyx7phmUwOWSZIeSDQTuEuNpMxA2D3avsgaDU1v4BwG1NgJk2sFj_kORlsVzeCIVvL5iDFKJ2Pc=w1618-h912);}
-            #category li .hospital {background:url(https://lh3.googleusercontent.com/fife/AAbDypBwb_Tzu33ulMX6CgpTMMz2LSs2LeHw1zgv0JgxQ_MFq3PIIVWGDW1jEIPA1GP6G6kbLO1B4iuDLF0WFIQ4lEwS_KW-P2Nu_Sb0wGw3uUPl58PZ4r-JyMa7M8Av-mj4mjMZ8nZJJbdj2SgI_vfR3VrHaDWWvha4flzCJpv6wocrzNh8rRzpCA2BPJ4dLyMOkOrnD13dBVh3GA_73py9S_T6T7yaftm38NjLjZixpGY1-dxIn1B6vBYPvK1fxWlco5GERaL3dnAt9xF9wt3QmJgL30sSBTcjtE0bbCTEx5ib32r4z9GH2h2-AoXDaMyTMAxFJZXr0sBJB1zlphuBvhsob3z9J7nkCFV6WMIBd3vrqLcHa3mp4M1pBVpLbH8eavUsBcLT1m84GU1M38WpmW6v3PhMgYUwTOntdUKlVbOqidmh3F99THsXo-1I9--jDeAK3C0JfgGsbqs5vg6Lp7VtLJn-i1laYf_D6Ai3EoTJZ3nraxgIJQbrlU7ofTFpp_sK8biWaT1XAI-hxx7r1VnBSpCBurx8QiMmtBdardaVvkPFPtKT47DgSLmlPpAVspzn4JEkx5htVgua7siGWQToCu7FNMUrx39Twtnv7-Ql_S35vHUM2dgJOCVYHPNwXr1oPiEtaMtHQi2uwF-EWJoYSo1HKl9WYUrS7EIKsbfPuPMwyyvMNema_IPfJ6Z8OtBREd0A8U3i_iZ5N8H8fIAgRWeOWkEZFRVkhwgfJl8_hgXfqj8mNiGf2jXlJyNyGA1792WcF4VW84FHYciqbQiveHmIgdTsaloFrfXYBdW2QPM1ofyPQ-cC3d15_c5zar1SXnOO26-0gK3duV7Da4XbA9Ln7qcR5mPFB6fXN3RP9giYbVmlimmX9uehSW1-IgpqMiaq0-mmuoMJyIe9_2neZy4bMgxHyIGscBhjjjccZRC0iNJNsUCh4wBxvhoi8r5ZL9Uz0yxhKg5b1gDI1U3LyUGNxnKD7AIjYx2PPLLLKlDgcDcPcD2jwXGJNMX6V3xuYMEsCPlqaaZlVFKRsTQgCVYjqS0_hap8588ZA0g_1OMSmdHXtJhMp7Ps92Z6bSS9lPjVB31HurSwx_lqZNKCZYhAEEt4ftSHy-BgrOFthVOFahYu7LCdLd-V16VYwG0f444ntDy26GS7IXCsNaWcIrZQ3JOcmQvUk03RMSqbF5SwLb2yTMX5QKiLMZDyF0sKnYf5RHMKx7IF4RY7WDEfHsBNkQykRXA3bNvTupdvKXvm0BHF8NO7xXgMOeoyr0Mq9gZ95T1oKC2QbPKrf-8Yg_LghTe7v9WggdmDOBWyMLFyFC7UpHvCpbGg3NJlOXOBKM9QeOFhS7ycdGrtxX87DZ2Y1zdzA7ok3EB9nXt1O1Tob1X0kGc0F9jKdsdyF1rEGUrb8Oojre_8WbNqUNGK6gJijSh0tfNWKoXAF4GFj3qbhTHm1ujY2gkSoj2MC0SOZwJv-w03aL0=w1618-h912);}
-            #category li .store {background:url(https://lh3.googleusercontent.com/fife/AAbDypDgbcedKHpaM6wcd_ST3TmOHVAQT7Y8l3rMX7p0BEWA4CvibokkRQATO9fn1LtDO2NqvaImiQfzdR1Hnwb5N4tppVl7Zhrp6J15Ogl0BcnMn2kivTiakQlddcZ7oJg_-0I6IUx-5VMdCbld2f1MSaV2JfT-tTrA0iElrxtW3bXGSIOefvA0gYHYBSD8GEKM6kkvYKtwi6_fI-SKH-pE5TMVs3lud-JJi0rwrRI-4GLqoiqvAOYn7KqqNQAiHOwinz3PqKU53qv0DL5nSrG-dTtZ1rJBYCDer6rfbv3A_GeGxdZUNy68YvINghfGQ1IDsZrSB5xw6vSfTirRbxVre-PGCf78g5Bm3HkCEwXxxKTu8XXTtTBhXIVcY5i7fHyhEL901fXneM1JiTKM_0-GqYgR2q9XfyJZf9IDHITX24viXEZA-FI_6zN67Qz1XpDC_cUE7hcAV_XBkPl1CXavOPSD-y6i4RkZsIdHFuvbioJpau4mYFQAFL63UeIgfRIEudSIvIH6E0fasbk_cVPRhshBxUF7sKcWVxxI8kPgiApQKTzWbFxveXdA-2aylWBWgIrdbDqKNMK1TNM94CMzdHdPjeq-uIyJ0RU1Jzqy7_8G4-oizerm82l1E3DhRNDH9esmfCkXyDiFyJ-mdtLAalQ6S-fdMuwuZiUKV_JkpkBqXiCEPCMAkQyZ44op0wvfdnPxpbNgXRyl58zWqJBArcrmkVmhOGV_fA-fL1Rt8vxDSXxt1FRuxh56QpYkGN2Mi9vml-GjDcr8WPc7NB-bn9zJrIztuuPu5uXThPgUYrh0pHqBV0njhUVvECS2QDOLOuWqB81dDaz-Yn_jK3zwXHiOH96xfrMF6TKUTTzkpjmknzfdp7nYrOMmCFEUAcAJK4GHdvQHyIA6VB_7veTNyO50Vth243XNYhFNG4iglypyXJv9hPHpdvoWtOrWgDFnsQuHpA0GrsruxQ7IA1zSnbdrMgOVD4v6UK7q6wNohy7CZCffOETCYQEZEjpy18fI3c4tGufltFRUTT8z4S-QgdLMN6iVzLZVWinCcCys-LwqpR-KGxnfsrc3dzS7evCt-hiITamjCKUMjxoHWFCkHdmPH-uNpjnUFkO10DIRu7upJgp_JWJQ9BpZBUguQlEYriJgx0t_5_xDTn6NQF52rRAgSGEgpkyQG-WSbxH9WS4l5fcvvKdgcErON6pABfPK9vOBQ5e30doBlHTiU6S4mrNhrUe4sVGvxVRp_9RXj5QCM98zn-jGyq64PlxcYa0RKxpvlkx_UdNJ2_OYywUdAUAp1nf4Emc52fSkvQkTyVMlsWBZ-cPUfl_fR5prAJGpKzheWOdRjbA0g3j41f_TpPWkafXsE3OKYnWlrIcFl4nSGeFwIl-HIwsneojoZrS91oBlSOfo-qST8ujg9u543ntwFCVdZ5QT3ny65K307aCi6xOwHh6v_jB78hkcrvzLv9vM5K0UHeKMEA8=w1920-h912);}
+            #category li .mart {background:url({% static 'trolley.png'%});}
+            #category li .pharmacy {background:url({% static 'pill.png'%});}
+            #category li .hospital {background:url({% static 'medicine.png'%});}
+            #category li .store {background:url({% static 'convenience.png'%});}
             
 
             .placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
@@ -35,16 +41,21 @@
             }
 
             .content{
-                width:100vw;
-                background-color: pink;
+                width:90vw;
+                margin-left:5vw;
+                margin-right:5vw;
+                background-color: #EEF1FF;
                 text-align: center;
+                box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
             }
 
             .sub-map{
-                background-color: greenyellow;
-                margin-top:10vh;
-                margin-left:20vw;
+                background-color: #D2DAFF;
+                margin-top:5vh;
+                margin-left:15vw;
+                margin-right:10vw;
                 width:60vw;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0.1, 0.1);
             }
 
 
@@ -55,16 +66,13 @@
         <h1 class ="title">예측 결과</h1>
         <div class="content">
             <h3>당신이 입력한 값은 {{lis}} </h3>
-            <h3>4만개의 데이터로 예측한 결과는 {{pred}} 입니다.</h3>
-        
-        <a href="{% url 'survey' %}">👉 메인페이지로 돌아가기</a>
+            <h3>4만개의 데이터로 예측한 결과는 {{pred}} 입니다.</h3>     
+            <a href="{% url 'survey' %}">👉 메인페이지로 돌아가기</a>
 
-        <div class="sub-map">
-            <div id="map" style="width:60vw;height:60vh;"></div>
-                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c461e735962dc3d83f03f40b8eb4959&libraries=services"></script>
+            <div class="sub-map">
                 <ul id="category">     
                     <li id="MT1" data-order="0"> 
-                        <span class="category_bg mart"></span>
+                        <span class="mart"></span>
                         마트
                     </li>  
                     <li id="PM9" data-order="1"> 
@@ -81,6 +89,9 @@
                         편의점
                     </li>      
                 </ul>
+                <div id="map" style="width:60vw;height:60vh;"></div>
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c461e735962dc3d83f03f40b8eb4959&libraries=services"></script>
+
             </div>
         </div>
             <script>
@@ -99,6 +110,19 @@
                 // 지도를 생성합니다    
                 var map = new kakao.maps.Map(mapContainer, mapOption); 
                 
+                if (navigator.geolocation) {
+                    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        
+                        var lat = position.coords.latitude, // 위도
+                            lon = position.coords.longitude; // 경도
+                        
+                        var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+        
+                        map.setCenter(locPosition);  
+                        searchAddress(map.getCenter(), );
+                    });
+                }
                 // 장소 검색 객체를 생성합니다
                 var ps = new kakao.maps.services.Places(map); 
                 
@@ -164,10 +188,10 @@
                     // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
                     // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
                     var order = document.getElementById(currCategory).getAttribute('data-order');
-                    image_list = ['https://lh3.googleusercontent.com/fife/AAbDypCeIc8f1OJBleJ54hOJndrPem2W6dk-fybfxMnNNmMAAbCQbZT0c5D7uiGZ_T_kNkZXTRF7P_wIUkEjiVfMHX6usdVBcp400hdAeads2_HwZZTZHrvkCFgEvFoupht5tNd02TglkuSpO0SmoPfKrC4-AW3qkX9mP02IQtKLxmNtji1vwpB3KVqfbin8XHt-V7X8idKzm-vVakolMuK244V98DQw-LLmrdAImkwoUuRE6jFNRzRPwhJ3uW-LiiObNxHQF3PUjxtwXCGZ7GAlYtASDb8aYi4aP9XzxrXj8XIoI_wzm6XN9ojMNQ1wvMGqEMGZZ2vsnNl_SVmrcpxF9vsPmlj7ZEJljaKeiqw23qflqAhh5RSRv5VflT4qWBA-aJ7PzWRn1nFSPXDMYy5EoFaUCrXkRfkl3H1gguLpOBVIHnuKQxDUshjCopbtvVh2RY3-sssmvqSItIEc_rmgCUz17cxt0rD_UTJOiEz400_L8ggN57EdKDWv8BOuuifIvdeNlfVN3qY3XM_dTy6pr1sCjYs6br_wVwD6PvXNrhzY-5toQO6ScACzqe_HaqK8II0UAMhUEGuZXNJerOo0P26wE3dDpH93sUX6gVFvvwzfTpyWrx6banuHOFz0DHqWwiqCyJadkyRCuh7QVeJvQiyCR8--dpHsg0rgvUrCCB1lzHHMs6ttPoYd56kWWKo-uDYSiLue5B6vUJpyFgEU5yGFl2YLtJt2U87m48SN6fnK_nSz68AOFRP71t0-IojujrCoV1GxHaKaw0JZY54BgtbpdcM3rqyBTzdu9XpHs-AmC-JhsT3XwJ-8KuuQPT6XaQp-4olcmI8D5oEjq4n3TnQ93iGlhl_oxme9jEGNGe5AvJ_XMaTCYCPeRatEfpeexl-fdzVcd6fGZkoVIjZUXAZ_knt887Y1Jr150l_w9ZHk1YcNfpRB1r2PF9hG6ljSyNm6xg_ig9i6k76gkYXho8vdQCo7uAiP0i9--kAAvYL6wlTrCiioRU5SgO3t_I6Y4eIIN0_ZYdnVPh-7T4wMY5qwIhciNzDQQ26OB01sU4bF0TKVgrYGkcTPP3xZfoerXdkOTYvqF7bWk6wy6YnyO_0eYmBxh0oQKe71IWvLMZe8VF9DhmEFzUqhLhF_aeV9AblCaKcLn43dIQxX6hFdx4nRlSXINOm_DLWVEhgC6wvRx9s5OWbXmPcM9VbXZ_fQNjxxuv6Hcf8VRn11oIyF74MiSi0Dsm46Gwwphn1R6Wo4ZzQCvPWME5Sar7x1Ep_kf8op1eaRRz5QYuTakWRAF61_VoQlsgC6RGCCMm-J6aVRMQpXx6Wya_wqgiCOq9D1ojuCn2GMTzH95DeX2wUrjPnuBpHKW8aqjWKz0xCBn7omuWgjkslrrXFuU60SqZU2Y9lPAAsoSfsE0ty4vJu6UwZtRLnLBgPLUXgDwVnBzFyhXdc_a_8m5PNPsSNVYKEWAun6Jy-n3oBW6G0=w1618-h912',
-                                'https://lh3.googleusercontent.com/fife/AAbDypDxvZSFBVVeqIMt7QSqYqJkI5Sq_wZN8XxhLk6ob3wluDAOeH-iE6iYuBdLbeLbpvkpCFgIpl5nNK5EDM_hT9dj6pFY-Jl3a5Q-btPKBcm_1z21a5HXXDiv_sYPbR7YAeohqcDCo-W1A4EJExQaVJPK8PwuadqrOM6gs5bGz7QFV06jQAx5dSr4Qjt_4VHfJXsf859cLXf4jkg6mhfsUljZ3n0IDvd1fOny0FeZ_gjuG4erk5hFEbDBrRDv-xWKWpjlHRq-5ejTPJxSY7JYtoync0VqJp-3VXLWES3xoDdziuA1oqURs-j1Et0QFF25EzKQw92uLcc4gMrpdSqaRwzYT6KtS5HLjvrpZMd2p_ugZz3yB8YsUMpDgijs1jR_gP25oqrFcCvDMu5c5hHO9E_BjDhTFyNR3zPHTa6909-875J_CFGJelJ6T_BIbCu6CFQd_2uJTyrbPhiDC1TP63viytATzhvvUP7lzZ1gx1dm1zG8uE-1ziZnYW8HXVxDAzlJwhaFpV68lS_jrXnSuRZNUJs-jXUGr15TgpjchheVu_bSWoz1jvjJeCX-hmP0l9vbzBM7s1AGK0oxX9aYid17owA1qKn09Ix1bTaVeIa0DbQOCN6V8baj0HxdJrdsUS-nmQEpnyKE2v18BmTAD1dYFsIzKLzYGhCKNy3GZnQWhjfUV5rtCvq4thPOvr0-6UW_WbQXLpRWbUd75VZmAr9qRK8IBaUlLlRyPL4rMVGcYZqnnXhzQtqKnibqUB6IaSNHJt7MfiXt0mHO2w3x_UXvBPGLbEtrAmIyeT4QDuj45Mu4M9yS83RXJrPzTW5bR5rIhxavFElqIJ2FO_7SCI5EzmZ7C_SSLwTnFS8cUO0f-K4kpohQe1KA7wvKr5oI99bSDqF7FNhlr6McrNBIFNdQGIiLusjVjAdqu_DHSorYyB45-Fz4ubFFXoouoX6erb25ZmnyFb_j9nskhuL23JnyihK4MzVx1DoaOimAwzXsl-gPUEXipjV_N_IPGNf2GbfubBRALJ63NUL66PMzIWpfgGDxuO2wrHzj1va8KGrdOGqmKPwNeOeRNh3FJjJzYuM5Bmnaqaiza2wtt5y3C6HLmKGNman4heK7MgP5M5puF75JzrXsJbu2cGh_0zv-L7lJtDPj4fzV1F-gHDPyjQJiUKresefL4Ni3qBFJM8pE8g1qrtfAuQzvqGsMjP64X8fJ9bKumSMXZrYdrmLiALNOOuEbeDOrrIOCCnAKO9lbLP4LXlQvofmDiMZN9MhlHp3yR6huXRrWSm2oP0DzZ2cUQeMe0gvxxppMHv2cPbol5J2WnyWc94rvzdoN3BkvUXAacXgaSF0itsvhNrnCaTHhhn96KbQZfydoB-gsCzMRYc7Fi_HDzTvcG_ZxmiDUj_Kdjyx7phmUwOWSZIeSDQTuEuNpMxA2D3avsgaDU1v4BwG1NgJk2sFj_kORlsVzeCIVvL5iDFKJ2Pc=w1618-h912',
-                                'https://lh3.googleusercontent.com/fife/AAbDypBwb_Tzu33ulMX6CgpTMMz2LSs2LeHw1zgv0JgxQ_MFq3PIIVWGDW1jEIPA1GP6G6kbLO1B4iuDLF0WFIQ4lEwS_KW-P2Nu_Sb0wGw3uUPl58PZ4r-JyMa7M8Av-mj4mjMZ8nZJJbdj2SgI_vfR3VrHaDWWvha4flzCJpv6wocrzNh8rRzpCA2BPJ4dLyMOkOrnD13dBVh3GA_73py9S_T6T7yaftm38NjLjZixpGY1-dxIn1B6vBYPvK1fxWlco5GERaL3dnAt9xF9wt3QmJgL30sSBTcjtE0bbCTEx5ib32r4z9GH2h2-AoXDaMyTMAxFJZXr0sBJB1zlphuBvhsob3z9J7nkCFV6WMIBd3vrqLcHa3mp4M1pBVpLbH8eavUsBcLT1m84GU1M38WpmW6v3PhMgYUwTOntdUKlVbOqidmh3F99THsXo-1I9--jDeAK3C0JfgGsbqs5vg6Lp7VtLJn-i1laYf_D6Ai3EoTJZ3nraxgIJQbrlU7ofTFpp_sK8biWaT1XAI-hxx7r1VnBSpCBurx8QiMmtBdardaVvkPFPtKT47DgSLmlPpAVspzn4JEkx5htVgua7siGWQToCu7FNMUrx39Twtnv7-Ql_S35vHUM2dgJOCVYHPNwXr1oPiEtaMtHQi2uwF-EWJoYSo1HKl9WYUrS7EIKsbfPuPMwyyvMNema_IPfJ6Z8OtBREd0A8U3i_iZ5N8H8fIAgRWeOWkEZFRVkhwgfJl8_hgXfqj8mNiGf2jXlJyNyGA1792WcF4VW84FHYciqbQiveHmIgdTsaloFrfXYBdW2QPM1ofyPQ-cC3d15_c5zar1SXnOO26-0gK3duV7Da4XbA9Ln7qcR5mPFB6fXN3RP9giYbVmlimmX9uehSW1-IgpqMiaq0-mmuoMJyIe9_2neZy4bMgxHyIGscBhjjjccZRC0iNJNsUCh4wBxvhoi8r5ZL9Uz0yxhKg5b1gDI1U3LyUGNxnKD7AIjYx2PPLLLKlDgcDcPcD2jwXGJNMX6V3xuYMEsCPlqaaZlVFKRsTQgCVYjqS0_hap8588ZA0g_1OMSmdHXtJhMp7Ps92Z6bSS9lPjVB31HurSwx_lqZNKCZYhAEEt4ftSHy-BgrOFthVOFahYu7LCdLd-V16VYwG0f444ntDy26GS7IXCsNaWcIrZQ3JOcmQvUk03RMSqbF5SwLb2yTMX5QKiLMZDyF0sKnYf5RHMKx7IF4RY7WDEfHsBNkQykRXA3bNvTupdvKXvm0BHF8NO7xXgMOeoyr0Mq9gZ95T1oKC2QbPKrf-8Yg_LghTe7v9WggdmDOBWyMLFyFC7UpHvCpbGg3NJlOXOBKM9QeOFhS7ycdGrtxX87DZ2Y1zdzA7ok3EB9nXt1O1Tob1X0kGc0F9jKdsdyF1rEGUrb8Oojre_8WbNqUNGK6gJijSh0tfNWKoXAF4GFj3qbhTHm1ujY2gkSoj2MC0SOZwJv-w03aL0=w1618-h912',
-                                'https://lh3.googleusercontent.com/fife/AAbDypDgbcedKHpaM6wcd_ST3TmOHVAQT7Y8l3rMX7p0BEWA4CvibokkRQATO9fn1LtDO2NqvaImiQfzdR1Hnwb5N4tppVl7Zhrp6J15Ogl0BcnMn2kivTiakQlddcZ7oJg_-0I6IUx-5VMdCbld2f1MSaV2JfT-tTrA0iElrxtW3bXGSIOefvA0gYHYBSD8GEKM6kkvYKtwi6_fI-SKH-pE5TMVs3lud-JJi0rwrRI-4GLqoiqvAOYn7KqqNQAiHOwinz3PqKU53qv0DL5nSrG-dTtZ1rJBYCDer6rfbv3A_GeGxdZUNy68YvINghfGQ1IDsZrSB5xw6vSfTirRbxVre-PGCf78g5Bm3HkCEwXxxKTu8XXTtTBhXIVcY5i7fHyhEL901fXneM1JiTKM_0-GqYgR2q9XfyJZf9IDHITX24viXEZA-FI_6zN67Qz1XpDC_cUE7hcAV_XBkPl1CXavOPSD-y6i4RkZsIdHFuvbioJpau4mYFQAFL63UeIgfRIEudSIvIH6E0fasbk_cVPRhshBxUF7sKcWVxxI8kPgiApQKTzWbFxveXdA-2aylWBWgIrdbDqKNMK1TNM94CMzdHdPjeq-uIyJ0RU1Jzqy7_8G4-oizerm82l1E3DhRNDH9esmfCkXyDiFyJ-mdtLAalQ6S-fdMuwuZiUKV_JkpkBqXiCEPCMAkQyZ44op0wvfdnPxpbNgXRyl58zWqJBArcrmkVmhOGV_fA-fL1Rt8vxDSXxt1FRuxh56QpYkGN2Mi9vml-GjDcr8WPc7NB-bn9zJrIztuuPu5uXThPgUYrh0pHqBV0njhUVvECS2QDOLOuWqB81dDaz-Yn_jK3zwXHiOH96xfrMF6TKUTTzkpjmknzfdp7nYrOMmCFEUAcAJK4GHdvQHyIA6VB_7veTNyO50Vth243XNYhFNG4iglypyXJv9hPHpdvoWtOrWgDFnsQuHpA0GrsruxQ7IA1zSnbdrMgOVD4v6UK7q6wNohy7CZCffOETCYQEZEjpy18fI3c4tGufltFRUTT8z4S-QgdLMN6iVzLZVWinCcCys-LwqpR-KGxnfsrc3dzS7evCt-hiITamjCKUMjxoHWFCkHdmPH-uNpjnUFkO10DIRu7upJgp_JWJQ9BpZBUguQlEYriJgx0t_5_xDTn6NQF52rRAgSGEgpkyQG-WSbxH9WS4l5fcvvKdgcErON6pABfPK9vOBQ5e30doBlHTiU6S4mrNhrUe4sVGvxVRp_9RXj5QCM98zn-jGyq64PlxcYa0RKxpvlkx_UdNJ2_OYywUdAUAp1nf4Emc52fSkvQkTyVMlsWBZ-cPUfl_fR5prAJGpKzheWOdRjbA0g3j41f_TpPWkafXsE3OKYnWlrIcFl4nSGeFwIl-HIwsneojoZrS91oBlSOfo-qST8ujg9u543ntwFCVdZ5QT3ny65K307aCi6xOwHh6v_jB78hkcrvzLv9vM5K0UHeKMEA8=w1920-h912']
+                    image_list = ['{% static 'trolley.png'%}',
+                                '{% static 'pill.png'%}',
+                                '{% static 'medicine.png'%}',
+                                '{% static 'convenience.png'%}']
                     
                     
                     for ( var i=0; i<places.length; i++ ) {

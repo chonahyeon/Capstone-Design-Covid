@@ -10,7 +10,7 @@ def Survey_home(request):
     return render(request,'Survey_home.html')
 
 def result(request):
-    tree = joblib.load('covid_model.sav')
+    tree = joblib.load('CovidWeb-Project\covid_model.sav')
     lis_typing=[]
     lis = []
     lis_typing.append(request.POST['이름'])

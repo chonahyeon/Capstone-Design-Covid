@@ -40,8 +40,66 @@ def result(request):
     lis.append(int(request.POST['오한']))
     lis.append(int(request.POST['충혈']))
 
+    kor_list =get_korList(lis)
+
     print('출력',lis) # chekbox값이 잘 전달되는지 확인
     print('기타값',lis_typing)
+    print('증상 한글 변환 값', kor_list)
 
     pred = tree.predict([lis])
-    return render(request,'result.html',{'pred':pred,'lis':lis})
+    kor_pred = ''
+    if pred[0] =='MILD COVID' or pred=='SEVERE COVID':
+        kor_pred = '코로나'
+    elif pred[0]=='COLD':
+        kor_pred = '일반 감기'
+    elif pred[0]=='ALLERGY':
+        kor_pred = '알러지'
+    else:
+        kor_pred = 'error'
+    return render(request,'result.html',{'kor_pred':kor_pred,'pred':pred,'kor_list':kor_list})
+
+
+def get_korList(lis):
+    count = 0
+    kor_list= []
+    for symptom in lis:
+        if count == 0 and symptom ==1:
+            kor_list.append('기침')
+        elif count == 1 and symptom ==1: 
+            kor_list.append('근육통')
+        elif count == 2 and symptom ==1: 
+            kor_list.append('피곤함')
+        elif count == 3 and symptom ==1: 
+            kor_list.append('목아픔')
+        elif count == 4 and symptom ==1: 
+            kor_list.append('콧물')
+        elif count == 5 and symptom ==1: 
+            kor_list.append('코막힘')
+        elif count == 6 and symptom ==1: 
+            kor_list.append('열')
+        elif count == 7 and symptom ==1: 
+            kor_list.append('매스꺼움')
+        elif count == 8 and symptom ==1: 
+            kor_list.append('구토')
+        elif count == 9 and symptom ==1: 
+            kor_list.append('설사')
+        elif count == 10 and symptom ==1: 
+            kor_list.append('호흡곤란')
+        elif count == 11 and symptom ==1: 
+            kor_list.append('숨막힘')
+        elif count == 12 and symptom ==1: 
+            kor_list.append('미각손실')
+        elif count == 13 and symptom ==1: 
+            kor_list.append('후각손실')
+        elif count == 14 and symptom ==1: 
+            kor_list.append('코가려움')
+        elif count == 15 and symptom ==1: 
+            kor_list.append('목가려움')
+        elif count == 16 and symptom ==1: 
+            kor_list.append('귀아픔')
+        elif count == 17 and symptom ==1: 
+            kor_list.append('오한')
+        elif count == 18 and symptom ==1: 
+            kor_list.append('충혈')
+        count+=1
+    return kor_list

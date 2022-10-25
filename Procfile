@@ -1,1 +1,1 @@
-web:gunicorn --pythonpath CovidWeb CovidWeb.wsgi --log-file -
+web:gunicorn --pythonpath CovidWeb.wsgi --log-file -

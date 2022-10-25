@@ -23,7 +23,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Survey_home,name='survey'),
-    path('result/',views.result,name='result')
+    path('result/',views.result,name='result'),
+    path('chart/',views.chart,name='chart')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

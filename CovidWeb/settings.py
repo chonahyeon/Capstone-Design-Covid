@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = my_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(os.environ.get('DJANGO_DEBUG',True))
 ALLOWED_HOSTS = ['*']
 
 
@@ -110,8 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'
-# 우리나라 시간 설정 
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

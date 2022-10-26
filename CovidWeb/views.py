@@ -56,6 +56,8 @@ def result(request):
         kor_pred = '일반 감기'
     elif pred[0]=='ALLERGY':
         kor_pred = '알러지'
+    elif pred[0]=='COMMON FLU':
+        kor_pred = '독감'    
     else:
         kor_pred = 'error'
     upload_sym(request,kor_pred)

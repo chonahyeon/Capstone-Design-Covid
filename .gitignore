@@ -127,6 +127,7 @@ my_settings.py
 .mypy_cache/
 .dmypy.json
 dmypy.json
+secrets.json
 
 # Pyre type checker
 .pyre/

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID-19 Chart</title>
+	<style>
+
+		body{
+			background-color: #AAC4FF;
+		}
+	</style>
+
+<!-- If you are using downloaded FusionCharts libraries, uncomment the below code   -->
+<!--
+
+	{% load static %}
+   	<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+   	<script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fusion.js" %}"></script>
+
+-->
+
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+</head>
+<body style="font-family:'Helvetica Neue', Arial; font-size: 16px;">
+	<br>
+	<h1 align="center">코로나 19 통계자료</h1>
+	<br>
+	<table border="1" align="center">
+		<tr>
+			<td><div id="chart-1">{{ output|safe }}</div></td>
+			<td><div id="chart-2">{{ output2|safe }}</div></td>
+            <td><div id="chart-3">{{ output3|safe }}</div></td>
+
+		</tr>
+
+		<tr>
+            <td></td>
+			<td><div id="chart-4">{{ output4|safe }}</div></td>
+            <td><div id="chart-5">{{ output5|safe }}</div></td>
+
+		</tr>
+	</table>
+
+	<br/>
+	<a href="/">Back</a>
+</body>
+</html>

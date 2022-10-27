@@ -33,6 +33,6 @@ heroku를 통해 배포 완료. 2022-10-26
                                        
                                        
 <img
-  src="https://user-images.githubusercontent.com/92921855/198329378-2be13533-f8a3-407e-896c-e9d256e047cf.gif"
-  width="80%"
+  src="https://user-images.githubusercontent.com/92921855/198338083-112da059-5bab-456a-9d01-5660ec80d8f1.gif"
+  width="800px"
 />

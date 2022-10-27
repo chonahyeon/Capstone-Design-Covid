@@ -30,4 +30,6 @@ heroku를 통해 배포 완료. 2022-10-26
 1. 웹사이트 접속하기
 2. 설문조사 Form에 맞춰 증상 입력하기
 3. 예측결과 확인
+                                                 
+![코로나_예측_진단서비스_-_Chrome_2022-10-27_23-41-46_AdobeExpress (1)](https://user-images.githubusercontent.com/92921855/198329378-2be13533-f8a3-407e-896c-e9d256e047cf.gif)
 

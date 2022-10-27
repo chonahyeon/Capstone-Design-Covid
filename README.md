@@ -1,7 +1,7 @@
 # Capstone-Design-Covid
 
 ### 프로젝트 개요
-코로나가 지속됨에 따라 의료서비스를 이용하기 힘든 사람들은 코로나 바이러스 감염 유무를 확인하는 것이 어렵다.                               
+코로나가 지속됨에 따라 의료서비스를 이용하기 힘든 사람들은 코로나 바이러스 감염 유무를 확인하기 어렵다.                               
 우리는 높은 검사비와 의료비로 인해 병원 기피 현상이 있는 국가와 의료수준이 낮은 국가, 간편한 검사를 원하는 사람들을 대상으로 머신러닝 알고리즘을 이용한 Covid-19와 유사 질병 간의 비교 예측 모델을 개발하고 웹으로 배포한다.                                   
 Make disease prediction system based on comparative prediction model between Covid-19 and pandemic influenza.                        
                                            

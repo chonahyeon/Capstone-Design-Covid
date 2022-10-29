@@ -35,4 +35,7 @@ heroku를 통해 배포 완료. 2022-10-26
 <img
   src="https://user-images.githubusercontent.com/92921855/198338083-112da059-5bab-456a-9d01-5660ec80d8f1.gif"
   width="800px"
-/>
+/>                       
+
+### 발표 자료 ( 학술제 )
+<https://docs.google.com/presentation/d/14KBNSrAkVcI_RIYsfGrCmd3KnUh6pg-Q8YmTq3AJFMU/edit?usp=sharing>

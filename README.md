@@ -39,5 +39,5 @@ heroku를 통해 배포 완료. 2022-10-26
 
 ### 발표 자료 ( 학술제 )
 <https://docs.google.com/presentation/d/14KBNSrAkVcI_RIYsfGrCmd3KnUh6pg-Q8YmTq3AJFMU/edit?usp=sharing>                                                       
-- 발표자료 추가
+- 발표자료 추가                                                                                   
 <https://docs.google.com/presentation/d/1xBCTIdxwwZ9orNH0GTiKXL_hJQ2Mr8ipcR1mq_rDKRo/edit?usp=sharing>

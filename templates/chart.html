@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증상 통계 페이지</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <style>
+		body {
+			background-color: #AAC4FF;
+			font-family: Verdana;
+			text-align: center;
+		}
+        h1{
+            text-align : center;
+        }
+        .main{
+            background-color: #EEF1FF;
+            position: absolute;
+            width:70vw;
+            height: 400vh;
+
+            margin-left:15vw;
+            margin-right:15vw; 
+            padding : 5vw auto;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+        .chart_container{
+            position: relative;
+            width:70vw;
+            height: 50vh;
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+            gap: 5vw;
+        }
+        .chart{
+            padding: 8px;
+        }
+        #chart_main{
+            max-width:1000px;
+			margin: 20px auto;
+        }
+        .navi{
+            background-color: #EEF1FF;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+            float: left;
+            width: 10%;
+            padding : 2px;
+        }
+        li {
+            list-style-type: none;
+        }
+		li a {
+			display: block;
+			color:#000000;
+			padding:8px;
+			font-weight: bold;
+		}
+		li a.current{
+			background-color: #5f85bb;
+			color:white;
+		}
+		li a:hover:not(.current){
+			background-color: #000080;
+			color:white;
+		}
+
+
+</style>
+
+</head>
+<body>
+<h1>증상 통계 페이지</h1>
+<div class="navi" >
+	<ul>
+		<li><a href="/">main</a></li>
+		<li><a href="/chart">chart</a></li>
+
+	</ul>
+</div>
+<div class="main">
+    <div>
+        <canvas id="chart_main"></canvas>
+        <script>
+            var ctx = document.getElementById('chart_main').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ['코로나', '독감', '감기', '알러지'],
+                    datasets: [{
+                        label: '감염인구',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)'],
+                        borderColor: [
+                            'rgb(255, 99, 132,1.5)',
+                            'rgba(54, 162, 235, 1.5)',
+                            'rgba(255, 206, 86, 1.5)',
+                            'rgba(75, 192, 192, 1.5)'],
+                        data: [2085, 25008, 1024, 16389]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    title: {
+                        display: true,
+                        text: '질병별 발생률',
+                        fontSize: 20,
+                        fontColor: 'rgba(46, 49, 49, 1)'
+                    },
+                    legend: {
+                        labels: {
+                            fontSize: 10
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: '15'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: '15'
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>
+    
+    <br>
+    <br>
+    <h3> 질병별 증상 발현률 </h3>
+    <div class="chart_container">
+        <div class="chart">
+        <canvas id="chart_covid"></canvas>
+            <script>
+                var ctx = document.getElementById('chart_covid').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'radar',
+    
+                    // The data for our dataset
+                    data: {
+                        labels: ['기침','근육통','피로','목아픔','콧물','코막힘','열','매스꺼움','구토','설사','호흡곤란','숨막힘','미각손실','후각손실','코가려움','눈가려움','목가려움','귀아픔','오한','충혈'],
+                        datasets: [{
+                            label: '증상 발현 인구',
+                            backgroundColor:  'rgba(255, 99, 132, 0.5)',
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(240, 99, 132, 0.5)',
+                            'rgba(30, 162, 235, 0.5)',
+                            'rgba(40, 206, 86, 0.5)',
+                            'rgba(30, 192, 192, 0.5)',
+                            'rgba(255,30, 132, 0.5)',
+                            'rgba(54, 120, 235, 0.5)',
+                            'rgba(255,150, 86, 0.5)',
+                            'rgba(75, 172, 192, 0.5)',
+                            'rgba(255, 99, 100, 0.5)',
+                            'rgba(54, 162, 200, 0.5)',
+                            'rgba(255, 206, 50, 0.5)',
+                            'rgba(75, 192, 170, 0.5)',
+                            'rgba(255, 22, 132, 0.5)',
+                            'rgba(54, 122, 235, 0.5)',
+                            'rgba(255, 100, 86, 0.5)',
+                            'rgba(75, 100, 192, 0.5)'],
+                            data: [1046, 1038, 1037, 1039, 10, 8, 1040, 1043, 1041, 1027, 1055, 1046, 2, 2, 5, 15, 6, 9, 1037, 249]
+                        }]
+                    },
+    
+                    // Configuration options go here
+                    options: {
+                        title: {
+                            display: true,
+                            text: '코로나',
+                            fontSize: 20,
+                            fontColor: 'rgba(46, 49, 49, 1)'
+                        },
+                        legend: {
+                            labels: {
+                                fontSize: 10
+                            }
+                        }
+                    }
+                });
+            </script>
+            
+        </div>
+        <div class="chart">
+            <canvas id="chart_flu"></canvas>
+            <script>
+                var ctx = document.getElementById('chart_flu').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'radar',
+    
+                    // The data for our dataset
+                    data: {
+                        labels: ['기침','근육통','피로','목아픔','콧물','코막힘','열','매스꺼움','구토','설사','호흡곤란','숨막힘','미각손실','후각손실','코가려움','눈가려움','목가려움','귀아픔','오한','충혈'],
+                        datasets: [{
+                            label: '증상 발현 인구',
+                            backgroundColor:  'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(240, 99, 132, 0.5)',
+                            'rgba(30, 162, 235, 0.5)',
+                            'rgba(40, 206, 86, 0.5)',
+                            'rgba(30, 192, 192, 0.5)',
+                            'rgba(255,30, 132, 0.5)',
+                            'rgba(54, 120, 235, 0.5)',
+                            'rgba(255,150, 86, 0.5)',
+                            'rgba(75, 172, 192, 0.5)',
+                            'rgba(255, 99, 100, 0.5)',
+                            'rgba(54, 162, 200, 0.5)',
+                            'rgba(255, 206, 50, 0.5)',
+                            'rgba(75, 192, 170, 0.5)',
+                            'rgba(255, 22, 132, 0.5)',
+                            'rgba(54, 122, 235, 0.5)',
+                            'rgba(255, 100, 86, 0.5)',
+                            'rgba(75, 100, 192, 0.5)'],
+                            data: [13422, 13384, 13390, 13366, 13361, 13343, 12936, 13395, 13406, 13360, 13378, 13402, 10106, 10115, 0, 0, 0, 0, 13365, 0]
+                        }]
+                    },
+    
+                    // Configuration options go here
+                    options: {
+                        title: {
+                            display: true,
+                            text: '독감',
+                            fontSize: 20,
+                            fontColor: 'rgba(46, 49, 49, 1)'
+                        },
+                        legend: {
+                            labels: {
+                                fontSize: 10
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <div class="chart">
+            <canvas id="chart_cold"></canvas>
+            <script>
+                var ctx = document.getElementById('chart_cold').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'radar',
+    
+                    // The data for our dataset
+                    data: {
+                        labels: ['기침','근육통','피로','목아픔','콧물','코막힘','열','매스꺼움','구토','설사','호흡곤란','숨막힘','미각손실','후각손실','코가려움','눈가려움','목가려움','귀아픔','오한','충혈'],
+                        datasets: [{
+                            label: '증상 발현 인구',
+                            backgroundColor:  'rgba(255, 206, 86, 0.5)',
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(240, 99, 132, 0.5)',
+                            'rgba(30, 162, 235, 0.5)',
+                            'rgba(40, 206, 86, 0.5)',
+                            'rgba(30, 192, 192, 0.5)',
+                            'rgba(255,30, 132, 0.5)',
+                            'rgba(54, 120, 235, 0.5)',
+                            'rgba(255,150, 86, 0.5)',
+                            'rgba(75, 172, 192, 0.5)',
+                            'rgba(255, 99, 100, 0.5)',
+                            'rgba(54, 162, 200, 0.5)',
+                            'rgba(255, 206, 50, 0.5)',
+                            'rgba(75, 192, 170, 0.5)',
+                            'rgba(255, 22, 132, 0.5)',
+                            'rgba(54, 122, 235, 0.5)',
+                            'rgba(255, 100, 86, 0.5)',
+                            'rgba(75, 100, 192, 0.5)'],
+                            data: [512, 512, 512, 512, 512, 512, 512, 0, 0, 0, 0, 0, 512, 512, 0, 0, 0, 0, 512, 0 ]
+                        }]
+                    },
+    
+                    // Configuration options go here
+                    options: {
+                        title: {
+                            display: true,
+                            text: '감기',
+                            fontSize: 20,
+                            fontColor: 'rgba(46, 49, 49, 1)'
+                        },
+                        legend: {
+                            labels: {
+                                fontSize: 10
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <div class="chart">
+            <canvas id="chart_allergy"></canvas>
+            <script>
+                var ctx = document.getElementById('chart_allergy').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'radar',
+    
+                    // The data for our dataset
+                    data: {
+                        labels: ['기침','근육통','피로','목아픔','콧물','코막힘','열','매스꺼움','구토','설사','호흡곤란','숨막힘','미각손실','후각손실','코가려움','눈가려움','목가려움','귀아픔','오한','충혈'],
+                        datasets: [{
+                            label: '증상 발현 인구',
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(240, 99, 132, 0.5)',
+                            'rgba(30, 162, 235, 0.5)',
+                            'rgba(40, 206, 86, 0.5)',
+                            'rgba(30, 192, 192, 0.5)',
+                            'rgba(255,30, 132, 0.5)',
+                            'rgba(54, 120, 235, 0.5)',
+                            'rgba(255,150, 86, 0.5)',
+                            'rgba(75, 172, 192, 0.5)',
+                            'rgba(255, 99, 100, 0.5)',
+                            'rgba(54, 162, 200, 0.5)',
+                            'rgba(255, 206, 50, 0.5)',
+                            'rgba(75, 192, 170, 0.5)',
+                            'rgba(255, 22, 132, 0.5)',
+                            'rgba(54, 122, 235, 0.5)',
+                            'rgba(255, 100, 86, 0.5)',
+                            'rgba(75, 100, 192, 0.5)'],
+                            data: [8193,8192,8193,8191,8197,8194,0,0,0,0,0,0,8195,8195,8197,8194,8193,8196,8196,8198]
+                        }]
+                    },
+    
+                    // Configuration options go here
+                    options: {
+                        title: {
+                            display: true,
+                            text: '알러지',
+                            fontSize: 20,
+                            fontColor: 'rgba(46, 49, 49, 1)'
+                        },
+                        legend: {
+                            labels: {
+                                fontSize: 10
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

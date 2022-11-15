@@ -89,13 +89,43 @@
         .Radiolist h4{
             margin-bottom:0.3em;
         }
+		.navi{
+            background-color: #EEF1FF;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+            float: left;
+            width: 10%;
+            padding : 2px;
+        }
+        li {
+            list-style-type: none;
+        }
+		li a {
+			display: block;
+			color:#000000;
+			padding:8px;
+			font-weight: bold;
+		}
+		li a.current{
+			background-color: #5f85bb;
+			color:white;
+		}
+		li a:hover:not(.current){
+			background-color: #000080;
+			color:white;
+		}
 
 	</style>
 </head>
 
 <body>
 	<h1>코로나 예측 진단 서비스</h1>
-
+	<div class="navi" >
+		<ul>
+			<li><a href="/">main</a></li>
+			<li><a href="/chart">chart</a></li>
+	
+		</ul>
+	</div>
 	<!-- Create Form -->
 	<form id="form" class="form-control Predict" action="result/" method="post">
         {% csrf_token %}

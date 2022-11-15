@@ -57,6 +57,31 @@
                 width:60vw;
                 box-shadow: 5px 5px 10px rgba(0, 0, 0.1, 0.1);
             }
+            .navi{
+                background-color: #EEF1FF;
+                box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+                float: left;
+                width: 10%;
+                padding : 2px;
+            }
+            li {
+                list-style-type: none;
+            }
+            li a {
+                display: block;
+                color:#000000;
+                padding:8px;
+                font-weight: bold;
+            }
+            li a.current{
+                background-color: #5f85bb;
+                color:white;
+            }
+            li a:hover:not(.current){
+                background-color: #000080;
+                color:white;
+            }
+
 
 
         </style>
@@ -64,6 +89,13 @@
     <body>
         
         <h1 class ="title">예측 결과</h1>
+        <div class="navi" >
+            <ul>
+                <li><a href="/">main</a></li>
+                <li><a href="/chart">chart</a></li>
+        
+            </ul>
+        </div>
         <div class="content">
             <h3>당신이 입력한 값은 {{kor_list}} </h3>
             <h3>4만개의 데이터로 예측한 결과는 {{kor_pred}} 입니다.</h3>     
